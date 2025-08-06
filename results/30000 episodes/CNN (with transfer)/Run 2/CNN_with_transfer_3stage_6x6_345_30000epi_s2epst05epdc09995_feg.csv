@@ -1,0 +1,14 @@
+Step,Action,Reward,RevealedBoard
+1,"(0, 1)",36,"[[True, True, True, True, True, True], [True, True, True, True, True, True], [False, False, False, False, False, False], [False, False, False, False, False, False], [False, False, False, False, False, False], [False, False, False, False, False, False]]"
+2,"(4, 3)",36,"[[True, True, True, True, True, True], [True, True, True, True, True, True], [False, False, False, False, False, False], [False, False, True, True, True, True], [False, False, True, True, True, True], [False, False, True, True, True, True]]"
+3,"(2, 0)",1,"[[True, True, True, True, True, True], [True, True, True, True, True, True], [True, False, False, False, False, False], [False, False, True, True, True, True], [False, False, True, True, True, True], [False, False, True, True, True, True]]"
+4,"(3, 1)",1,"[[True, True, True, True, True, True], [True, True, True, True, True, True], [True, False, False, False, False, False], [False, True, True, True, True, True], [False, False, True, True, True, True], [False, False, True, True, True, True]]"
+5,"(4, 0)",-10,"[[True, True, True, True, True, True], [True, True, True, True, True, True], [True, False, False, False, False, False], [False, True, True, True, True, True], [True, False, True, True, True, True], [False, False, True, True, True, True]]"
+
+Board
+0,0,0,0,0,0
+1,1,2,1,2,1
+1,-1,2,-1,2,-1
+2,2,2,1,2,1
+-1,2,1,0,0,0
+2,-1,1,0,0,0
