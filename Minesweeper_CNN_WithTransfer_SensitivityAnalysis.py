@@ -12,6 +12,14 @@ import csv
 
 
 # --- Hyperparameters ---
+<<<<<<< HEAD
+=======
+TRAINING_STAGES = [
+    {"episodes": 10000, "rows": 6, "cols": 6, "mines": 3, "epsilon_start": 1.0, "epsilon_decay": 0.999},
+    {"episodes": 10000, "rows": 6, "cols": 6, "mines": 4, "epsilon_start": 0.5, "epsilon_decay": 0.9995},
+    {"episodes": 10000, "rows": 6, "cols": 6, "mines": 5, "epsilon_start": 0.5, "epsilon_decay": 0.9995},
+]
+>>>>>>> c90c1abd6d18491f2546ddbe60f20b66287cc70f
 
 
 EVAL_EPISODES = 1000                  # Number of episodes during final evaluation
@@ -235,7 +243,11 @@ def save_results_csv(win_rates, reward_avgs, stage_switches, last_eval_rate, tag
             writer.writerow([i * PRINT_RATE, r])
 
     # Save evaluation summary
+<<<<<<< HEAD
     with open(f"results/eval_summary_{tag}.csv", "a", newline='') as f:
+=======
+    with open("results/eval_summary.csv", "a", newline='') as f:
+>>>>>>> c90c1abd6d18491f2546ddbe60f20b66287cc70f
         writer = csv.writer(f)
         if f.tell() == 0:  # file is empty
             writer.writerow(["ModelTag", "EvalWinRate"])
