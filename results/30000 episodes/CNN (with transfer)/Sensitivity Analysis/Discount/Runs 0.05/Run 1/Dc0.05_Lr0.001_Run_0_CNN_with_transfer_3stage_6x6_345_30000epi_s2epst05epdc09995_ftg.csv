@@ -1,0 +1,11 @@
+Step,Action,Reward,RevealedBoard
+1,"(4, 0)",128,"[[False, False, True, True, True, True], [True, True, True, True, True, True], [True, True, True, True, True, True], [True, True, True, True, True, True], [True, True, True, True, True, True], [True, True, True, True, False, False]]"
+2,"(0, 0)",51,"[[True, False, True, True, True, True], [True, True, True, True, True, True], [True, True, True, True, True, True], [True, True, True, True, True, True], [True, True, True, True, True, True], [True, True, True, True, False, False]]"
+
+Board
+1,-1,1,0,0,0
+1,1,1,0,0,0
+0,0,0,0,0,0
+0,0,0,0,0,0
+0,0,0,1,2,2
+0,0,0,1,-1,-1

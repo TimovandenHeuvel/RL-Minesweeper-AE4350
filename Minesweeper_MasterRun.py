@@ -12,14 +12,13 @@ import csv
 
 
 # --- Hyperparameters ---
-
-
 EVAL_EPISODES = 1000                  # Number of episodes during final evaluation
 MAX_STEPS_MULTIPLIER = 2              # Multiplies board size to cap steps
 MIN_EPSILON = 0.01                    # Lower bound for exploration
 BATCH_SIZE = 128                      # Experience replay batch size
 SAVE_MODEL_EVERY = 100                # Sync target network every N episodes
 PRINT_RATE = 200                      # How often to print performance info
+
 
 # --- Minesweeper Environment ---
 class MinesweeperGame:
@@ -422,42 +421,20 @@ def train():
 
 # --- Main Script ---
 
-
-
 if __name__ == "__main__":
-    for run in range(1):
-        DISCOUNT = 0.95                       # Discount factor (gamma) for future rewards
-        # LEARNING_RATE = [0.01, 0.001, 0.0001] # Adam optimizer learning rate
-        
-        EPSILON_DECAY_ST2_3 = [0.9999]
-        TRAINING_STAGES = [
-            {"episodes": 10000, "rows": 6, "cols": 6, "mines": 3, "epsilon_start": 1.0, "epsilon_decay": 0.999},
-            {"episodes": 10000, "rows": 6, "cols": 6, "mines": 4, "epsilon_start": 0.5, "epsilon_decay": EPSILON_DECAY_ST2_3}, # 0.9995
-            {"episodes": 10000, "rows": 6, "cols": 6, "mines": 5, "epsilon_start": 0.5, "epsilon_decay": EPSILON_DECAY_ST2_3}, # 0.9995
-        ]
-        
-        
-        # DISCOUNT = [0.95, 0.50, 0.05]           # Discount factor (gamma) for future rewards 
-        LEARNING_RATE = 0.001                   # Adam optimizer learning rate
-        
-        # DISCOUNT = DISCOUNT[run]
-        # LEARNING_RATE = LEARNING_RATE[run]
-        
-        for times in range(2):
-            # Select the correct epsilon decay value for the current run
-            current_epsilon_decay = EPSILON_DECAY_ST2_3[run]
-            
-            # Update the TRAINING_STAGES list with the correct value
-            TRAINING_STAGES[1]["epsilon_decay"] = current_epsilon_decay
-            TRAINING_STAGES[2]["epsilon_decay"] = current_epsilon_decay
-                        
-            
-            RUN_TITLE = str(f'Dc{DISCOUNT}_Lr{LEARNING_RATE}_Run_{times+1}_CNN_with_transfer_3stage_6x6_345_30000epi_s2epst05epdc{current_epsilon_decay}')
-            print(f'Run {times+1} at Discount = {DISCOUNT}, Learning rate = {LEARNING_RATE}')
-            first, last, final = train()
+    DISCOUNT = 0.95                       # Discount factor (gamma) for future rewards
+    LEARNING_RATE = 0.001                 # Adam optimizer learning rate
+    TRAINING_STAGES = [
+        {"episodes": 20000, "rows": 6, "cols": 6, "mines": 3, "epsilon_start": 1.0, "epsilon_decay": 0.999},
+        {"episodes": 20000, "rows": 6, "cols": 6, "mines": 4, "epsilon_start": 0.5, "epsilon_decay": 0.999},
+        {"episodes": 20000, "rows": 6, "cols": 6, "mines": 5, "epsilon_start": 0.5, "epsilon_decay": 0.999},
+    ]
+
     
-    
-    
-            visualize_game(*first, title="First Training Game")
-            visualize_game(*last, title="Last Training Game")
-            visualize_game(*final, title="Final Evaluation Game")
+    RUN_TITLE = 'MASTER_RUN_CNN_with_transfer_3stage_6x6_345_60000epi_s2epst05epdc0_999_Lr0_001_Dc0_95'
+    first, last, final = train()
+
+
+    visualize_game(*first, title="First Training Game")
+    visualize_game(*last, title="Last Training Game")
+    visualize_game(*final, title="Final Evaluation Game")
